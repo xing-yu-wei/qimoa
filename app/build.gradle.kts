@@ -72,7 +72,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
 
     // 5. Apache POI (导出Excel用)
-    implementation("com.github.DaelimGreenEnergy:jexcel:1.0.0")
+    //implementation("com.github.DaelimGreenEnergy:jexcel:1.0.0")
 
     // ================================================================
 }
