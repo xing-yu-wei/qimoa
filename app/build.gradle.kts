@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -27,6 +28,10 @@ android {
                 "proguard-rules.pro"
             )
         }
+        // 【新增】开启 ViewBinding，这能帮你少写很多 findViewById，代码更规范
+        buildFeatures {
+            viewBinding = true
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
@@ -46,4 +51,28 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    // ================== 【请把下面这些复制粘贴进去】 ==================
+
+    // 1. 第三方图表库 MPAndroidChart
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    // 2. 本地数据库 Room (注意这里写法变了，要用 kapt)
+    val room_version = "2.6.1"
+    implementation("androidx.room:room-runtime:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+
+    // 3. 网络请求 Retrofit + Gson
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+
+    // 4. 协程
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.1")
+
+    // 5. Apache POI (导出Excel用)
+    implementation("com.github.DaelimGreenEnergy:jexcel:1.0.0")
+
+    // ================================================================
 }
