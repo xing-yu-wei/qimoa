@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- 权限部分 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -19,7 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Qimoa"
         tools:targetApi="31">
-
+        <activity
+            android:name=".ui.AddRecordActivity"
+            android:exported="false" />
         <!-- 1. SplashActivity (启动页) -->
         <!-- 注意：intent-filter 必须包裹在这里面！ -->
         <activity
@@ -28,17 +32,14 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-
-        <!-- 2. MainActivity (主页) -->
+        </activity> <!-- 2. MainActivity (主页) -->
         <!-- 这里没有 intent-filter 了，exported 改成 false -->
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
