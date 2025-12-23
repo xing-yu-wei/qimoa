@@ -19,16 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <!-- 这里等会放 RecyclerView (列表)，先留个空位 -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="暂无数据，快去记一笔吧~"
-        android:textColor="#999999"
+    <!-- 原来的 TextView 删掉，换成这个 RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
 
     <!-- 悬浮按钮 (FloatingActionButton) -->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
