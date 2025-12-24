@@ -1,14 +1,115 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ChartFragment">
+    android:fillViewport="true"
+    android:background="#FFFFFF">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="16dp">
 
-</FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="财务统计报表"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#333333"
+            android:layout_marginBottom="15dp"/>
+
+        <!-- 收支切换开关 -->
+        <RadioGroup
+            android:id="@+id/rg_chart_type"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/ic_launcher_background"
+            android:backgroundTint="#F0F0F0"
+            android:layout_marginBottom="20dp">
+            <!-- 这里偷懒用了背景色区分，为了美观你可以自己调 -->
+
+            <RadioButton
+                android:id="@+id/rb_expense_chart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="支出报表"
+                android:gravity="center"
+                android:button="@null"
+                android:checked="true"
+                android:textColor="#333333"
+                android:background="?android:attr/selectableItemBackground"/>
+
+            <RadioButton
+                android:id="@+id/rb_income_chart"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="收入报表"
+                android:gravity="center"
+                android:button="@null"
+                android:textColor="#333333"
+                android:background="?android:attr/selectableItemBackground"/>
+        </RadioGroup>
+
+        <!-- 第二层：【新增】时间范围切换 (本月 vs 本周) -->
+        <RadioGroup
+            android:id="@+id/rg_time_scope"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="20dp">
+
+            <RadioButton
+                android:id="@+id/rb_month"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="本月"
+                android:checked="true"
+                android:layout_marginEnd="30dp"/>
+
+            <RadioButton
+                android:id="@+id/rb_week"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="本周" />
+        </RadioGroup>
+
+        <!-- 1. 饼状图：看占比 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="分类占比 (饼图)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pie_chart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="30dp"/>
+
+        <!-- 2. 折线图：看趋势 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="每日趋势 (折线图)"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/line_chart"
+            android:layout_width="match_parent"
+            android:layout_height="300dp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
