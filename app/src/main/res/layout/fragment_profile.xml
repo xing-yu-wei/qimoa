@@ -1,14 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ProfileFragment">
+    android:orientation="vertical"
+    android:background="#F5F5F5">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- 头部：个人信息 -->
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="200dp"
+        android:background="#2196F3"
+        android:gravity="center"
+        android:orientation="vertical">
 
-</FrameLayout>
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ic_profile"
+            android:background="@drawable/ic_launcher_background"
+            android:padding="10dp"
+            android:backgroundTint="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="魏星宇"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="学号：202305100208"
+            android:textSize="14sp"
+            android:textColor="#E0E0E0"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+    <!-- 预算卡片 -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="3dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="本月预算管理"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#333333"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="15dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="已消费"
+                    android:textColor="#666666"/>
+
+                <TextView
+                    android:id="@+id/tv_budget_limit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="总预算: 0"
+                    android:textColor="#666666"/>
+            </LinearLayout>
+
+            <!-- 进度条 -->
+            <ProgressBar
+                android:id="@+id/progress_budget"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="5dp"
+                android:progress="0"
+                android:max="100"/>
+
+            <TextView
+                android:id="@+id/tv_expense_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0.00 / 2000.00"
+                android:textSize="16sp"
+                android:layout_marginTop="5dp"
+                android:textColor="#333333"/>
+
+            <Button
+                android:id="@+id/btn_set_budget"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="设置预算"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#FF9800"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 功能列表 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/btn_export_excel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="导出账单 (Excel/CSV)"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:drawableStart="@android:drawable/ic_menu_save"
+            android:drawablePadding="10dp"
+            android:padding="15dp"
+            android:background="?android:attr/selectableItemBackground"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#F0F0F0"/>
+
+        <TextView
+            android:id="@+id/btn_about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="关于应用"
+            android:textSize="16sp"
+            android:textColor="#333333"
+            android:drawableStart="@android:drawable/ic_menu_info_details"
+            android:drawablePadding="10dp"
+            android:padding="15dp"/>
+
+    </LinearLayout>
+
+</LinearLayout>
